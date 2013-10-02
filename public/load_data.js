@@ -1,19 +1,21 @@
-d3.json("tweets.json", function(error, tweets) {
+d3.json("syriatweets.json", function(error, tweets) {
   var pane_simple = d3.select("#pane_simple");
   var dimensions = {
-    margin: {top: 3, right: 3, bottom: 3, left: 3},
-    outer: { width: 300, height: 80 }
+    margin: {top: 6, right: 120, bottom: 3, left: 3},
+    outer: { width: 400, height: 100 },
+    text: { height: 12 }
   };
+  var time_width = dimensions.outer.width - dimensions.margin.right - dimensions.margin.left;
 
   // Prepare data
-  var data           = tweets.filter(function(d) { return( d.timestamp > 1379631600 ); });  // Really ought to do this server side
+  //var data           = tweets.filter(function(d) { return( d.timestamp > 1379631600 ); });  // Really ought to do this server side
   //var data           = tweets.filter(function(d) { return( d.timestamp > 1379673107 ); });  // TED start
-  //var data           = tweets.filter(function(d) { return( d.timestamp > 1378135973 ); });  // Syria start
+  var data           = tweets.filter(function(d) { return( d.timestamp > 1378135973 ); });  // Syria start
   //var data = tweets;
 
   // Tweets
   var tweet_times          = data.map(function(d) { return new Date(d.timestamp*1000); });
-  var tweet_times_scale    = d3.time.scale().domain(d3.extent(tweet_times)).range([0, dimensions.outer.width]);
+  var tweet_times_scale    = d3.time.scale().domain(d3.extent(tweet_times)).range([0, time_width]);
   var tweet_time_bin_count = 50;
   var tweet_rate           = d3.layout.histogram().bins(tweet_times_scale.ticks(tweet_time_bin_count))(tweet_times);
   var tweet_cumulative     = tweet_rate.map( function(d,i) { 
