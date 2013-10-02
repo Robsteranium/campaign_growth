@@ -1,0 +1,17 @@
+.simple_row {
+  div {
+    float: left;
+    display: block;
+  }
+
+  .label {
+    width: 100px;
+    height: 100px;
+  }
+
+  path {
+    stroke: steelblue;
+    stroke-width: 1;
+    fill: none;
+  }
+}
