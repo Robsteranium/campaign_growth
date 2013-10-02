@@ -1,4 +1,4 @@
-d3.json("syriatweets.json", function(error, tweets) {
+d3.json("tweets.json", function(error, tweets) {
   var pane_simple = d3.select("#pane_simple");
   var dimensions = {
     margin: {top: 6, right: 120, bottom: 3, left: 3},
@@ -8,9 +8,9 @@ d3.json("syriatweets.json", function(error, tweets) {
   var time_width = dimensions.outer.width - dimensions.margin.right - dimensions.margin.left;
 
   // Prepare data
-  //var data           = tweets.filter(function(d) { return( d.timestamp > 1379631600 ); });  // Really ought to do this server side
+  var data           = tweets.filter(function(d) { return( d.timestamp > 1379631600 ); });  // Really ought to do this server side
   //var data           = tweets.filter(function(d) { return( d.timestamp > 1379673107 ); });  // TED start
-  var data           = tweets.filter(function(d) { return( d.timestamp > 1378135973 ); });  // Syria start
+  //var data           = tweets.filter(function(d) { return( d.timestamp > 1378135973 ); });  // Syria start
   //var data = tweets;
 
   // Tweets
