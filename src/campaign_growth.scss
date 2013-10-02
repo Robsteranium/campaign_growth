@@ -1,14 +1,8 @@
-.simple_row {
-  div {
-    float: left;
-    display: block;
-  }
+body {
+  margin-top: 100px;
+}
 
-  .label {
-    width: 100px;
-    height: 100px;
-  }
-
+.simple {
   path {
     stroke: black;
     stroke-width: 2;
